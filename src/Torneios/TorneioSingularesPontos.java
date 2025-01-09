@@ -9,13 +9,15 @@ public class TorneioSingularesPontos extends TorneioSingulares {
     private String nome;
     private String localizacao;
     private int[] pontosJogador;
+    private char genero;
     
     public TorneioSingularesPontos(ArrayList<PartidaSingulares> partidas, ArrayList<Jogador> jogadores, String nome,
-            String localizacao) {
+            String localizacao, char genero) {
         super(partidas, jogadores);
         this.nome = nome;
         this.localizacao = localizacao;
         this.pontosJogador = new int[jogadores.size()];
+        this.genero = genero;
     }
 
     public String getNome() {
@@ -28,6 +30,10 @@ public class TorneioSingularesPontos extends TorneioSingulares {
 
     public String getLocalizacao() {
         return localizacao;
+    }
+
+    public char getGenero() {
+        return genero;
     }
 
     public void setLocalizacao(String localizacao) {
@@ -60,14 +66,14 @@ public class TorneioSingularesPontos extends TorneioSingulares {
             int pontosWinner = 3;
             double gameTime = partida.tempoPartida();
             if (gameTime < 20) {
-                pontosWinner = 5;
+                pontosWinner = 4;
             }
            int indexWinner = getJogadores().indexOf(winner);
            this.pontosJogador[indexWinner] += pontosWinner;
         }
         int max = 0;
         int maxIndex = 0;
-        for(int i = 0; i < this.pontosJogador().length; i++) {
+        for(int i = 0; i < this.pontosJogador.length; i++) {
             if (max < this.pontosJogador[i]) {
                 max = this.pontosJogador[i];
                 maxIndex = i;

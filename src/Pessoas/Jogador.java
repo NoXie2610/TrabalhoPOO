@@ -2,12 +2,7 @@ package Pessoas;
 public class Jogador extends Pessoa {
     private String nacionalidade;
     private int ranking;
-    private int partidasJogadas;
-
-    public Jogador(){
-        
-    }
-   
+    private int partidasJogadas;   
     public Jogador(String nome, int idade, char genero, String nacionalidade, int ranking, int partidasJogadas) {
         super(nome, idade, genero);
         this.nacionalidade = nacionalidade;

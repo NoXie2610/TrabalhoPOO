@@ -4,12 +4,6 @@ public abstract class Pessoa {
     private String nome;
     private int idade;
     private char genero;
-
-    public Pessoa(){
-
-    }
-
-    
     public Pessoa(String nome, int idade, char genero) {
         this.nome = nome;
         this.idade = idade;
