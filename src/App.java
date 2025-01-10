@@ -1,14 +1,11 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Scanner;
-
-import Campeonato.Campeonato;
 import Partidas.PartidaSingulares;
 import Pessoas.Arbitro;
 import Pessoas.Jogador;
 import Torneios.TorneioSingularesEliminatorias;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 
 
@@ -26,7 +23,6 @@ public class App {
         } catch (FileNotFoundException e) {
            e.printStackTrace();
         }
- 
 
         jogadores.add((new Jogador("Tiago", 20, 'M', "x", 800, 0)));
         jogadores.add((new Jogador("yuyu", 20, 'M', "x", 500, 0)));
@@ -40,6 +36,6 @@ public class App {
 
 
     }
-}   
+}
 
 

@@ -8,15 +8,73 @@
 
     public class TorneioDoubles {
         private ArrayList<PartidaDoubles> partidas;
-        private int[] pontosEquipas;
         private ArrayList<Jogador> jogadores;
-        private ArrayList<ArrayList<Jogador>>equipas;
+        private ArrayList<ArrayList<Jogador>> equipas;
+        private String nome;
+        private String localizacao;
+        private int[] pontosEquipas;
+        private char genero;
     
-        public TorneioDoubles(ArrayList<PartidaDoubles> partidas,ArrayList<Jogador> jogadores, int[] pontosEquipas,ArrayList<Jogador>equipas) {
+        public void setPartidas(ArrayList<PartidaDoubles> partidas) {
             this.partidas = partidas;
-            this.pontosEquipas = new int[jogadores.size()/2] ; // pois sao equipas de 2, sao pontos de uma equipa de 2
+        }
+
+        public ArrayList<Jogador> getJogadores() {
+            return jogadores;
+        }
+
+        public void setJogadores(ArrayList<Jogador> jogadores) {
             this.jogadores = jogadores;
+        }
+
+        public ArrayList<ArrayList<Jogador>> getEquipas() {
+            return equipas;
+        }
+
+        public void setEquipas(ArrayList<ArrayList<Jogador>> equipas) {
+            this.equipas = equipas;
+        }
+
+        public String getNome() {
+            return nome;
+        }
+
+        public void setNome(String nome) {
+            this.nome = nome;
+        }
+
+        public String getLocalizacao() {
+            return localizacao;
+        }
+
+        public void setLocalizacao(String localizacao) {
+            this.localizacao = localizacao;
+        }
+
+        public int[] getPontosEquipas() {
+            return pontosEquipas;
+        }
+
+        public void setPontosEquipas(int[] pontosEquipas) {
+            this.pontosEquipas = pontosEquipas;
+        }
+
+        public char getGenero() {
+            return genero;
+        }
+
+        public void setGenero(char genero) {
+            this.genero = genero;
+        }
+
+        public TorneioDoubles(ArrayList<PartidaDoubles> partidas, ArrayList<Jogador> jogadores, String nome, String localizacao, char genero) {
+            this.partidas = partidas;
+            this.jogadores = jogadores;
+            this.nome = nome;
+            this.localizacao = localizacao;
             this.equipas = new ArrayList<>();
+            this.genero = genero;
+            this.pontosEquipas = new int[jogadores.size() / 2]; 
         }
 
         public ArrayList<PartidaDoubles> getPartidas() {
@@ -68,6 +126,8 @@
                     maxIndex = i;
                 }
             }
+
+            ArrayList<Jogador> equipaVencedora = equipas.get(maxIndex);
             System.out.println("A equipa vencedora do torneio é: " + equipas.get(maxIndex).get(0).getNome() + " e " + equipas.get(maxIndex).get(1).getNome() + " com " + max + "pontos, parabéns!");
 
         }

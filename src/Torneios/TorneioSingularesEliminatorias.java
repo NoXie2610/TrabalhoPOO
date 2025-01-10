@@ -103,7 +103,7 @@ public class TorneioSingularesEliminatorias extends TorneioSingulares {
         }    
         
   }
-  public void determinarRanking(){
+    public void determinarRanking(){
     for(Jogador jogador : vencedores){
         jogador.setRanking(jogador.getRanking()+5);
     }
