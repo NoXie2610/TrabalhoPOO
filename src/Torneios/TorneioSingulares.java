@@ -7,7 +7,7 @@ import Pessoas.Jogador;
 
 public abstract class TorneioSingulares {
     private ArrayList<PartidaSingulares> partidas;
-    private static ArrayList<Jogador> jogadores;
+    private ArrayList<Jogador> jogadores;
     
         public TorneioSingulares(ArrayList<PartidaSingulares> partidas, ArrayList<Jogador> jogadores) {
             this.partidas = partidas;

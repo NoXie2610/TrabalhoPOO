@@ -2,7 +2,7 @@ package Pessoas;
 public class Jogador extends Pessoa {
     private String nacionalidade;
     private int ranking;
-    private int partidasJogadas;   
+    private int partidasJogadas;
     public Jogador(String nome, int idade, char genero, String nacionalidade, int ranking, int partidasJogadas) {
         super(nome, idade, genero);
         this.nacionalidade = nacionalidade;
@@ -30,6 +30,10 @@ public class Jogador extends Pessoa {
 
     public void adicionarPartidaJogada(){
         this.partidasJogadas += 1;
+    }
+    @Override
+    public String toString() {
+        return this.getNome()+":"+this.getIdade()+":"+this.getGenero()+":"+this.getNacionalidade()+":"+this.getRanking()+":"+this.getPartidasJogadas();
     }
     
 }

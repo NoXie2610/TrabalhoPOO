@@ -1,5 +1,6 @@
 import javax.swing.*;
 
+import Campeonato.Campeonato;
 import Torneios.TorneioDoubles;
 import Torneios.TorneioSingularesEliminatorias;
 import Torneios.TorneioSingularesPontos;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 
 public class HomePage {
     public HomePage() {
+        Campeonato campeonato = new Campeonato();
         TorneioDoubles torneioDoubles = new TorneioDoubles(new ArrayList<>(), new ArrayList<>(), "Doubles", "1231", 'M');
         TorneioSingularesEliminatorias torneioSingularesEliminatorias = new TorneioSingularesEliminatorias(new ArrayList<>(), new ArrayList<>(), "Torneio Singulares eliminatorias", "Portugal", 'F');
         TorneioSingularesPontos torneioSingularesPontos = new TorneioSingularesPontos(new ArrayList<>(), new ArrayList<>(), "Torneio Singulares por Pontos", "Portugal", 'F');

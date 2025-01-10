@@ -1,5 +1,1 @@
-Diogo:1
-Tiago:805
-yuyu:505
-Diogo:1200
-dsadasdasiogo:1
+Tiago:20:M:x:800:0

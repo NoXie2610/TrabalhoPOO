@@ -5,17 +5,21 @@ import Torneios.TorneioDoubles;
 import Torneios.TorneioSingulares;
 import Torneios.TorneioSingularesEliminatorias;
 import Torneios.TorneioSingularesPontos;
+import Campeonato.Campeonato;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 public class RegistrationPage {
+    private Campeonato campeonato;
     private TorneioDoubles torneioDoubles;
     private TorneioSingularesEliminatorias torneioSingularesEliminatorias;
     private TorneioSingularesPontos torneioSingularesPontos;
-    public RegistrationPage(TorneioDoubles torneioDoubles, TorneioSingularesEliminatorias torneioSingularesEliminatorias, TorneioSingularesPontos torneioSingularesPontos) {
+    public RegistrationPage(Campeonato campeonato, TorneioDoubles torneioDoubles, TorneioSingularesEliminatorias torneioSingularesEliminatorias, TorneioSingularesPontos torneioSingularesPontos) {
         this.torneioDoubles = torneioDoubles;
         this.torneioSingularesEliminatorias = torneioSingularesEliminatorias;
         this.torneioSingularesPontos = torneioSingularesPontos;
@@ -66,6 +70,8 @@ public class RegistrationPage {
                 torneioDoubles.getJogadores().add(jogador);
                 torneioSingularesEliminatorias.getJogadores().add(jogador);
                 torneioSingularesPontos.getJogadores().add(jogador);
+                campeonato.getAllPlayers().add(jogador);
+                addJogadorToFile(jogador);
                 JOptionPane.showMessageDialog(frame, "Jogador registrado com sucesso!", "Sucesso", JOptionPane.INFORMATION_MESSAGE);
 
             }
@@ -86,8 +92,18 @@ public class RegistrationPage {
         frame.add(panel);
         frame.setVisible(true);
     }
-
     public static void main(String[] args) {
         TorneioDoubles torneioDoubles = new TorneioDoubles(new ArrayList<>(), new ArrayList<>(), "teste", "1231", 'M');
+    }
+
+
+
+
+    private void addJogadorToFile(Jogador jogador){
+        PrintWriter printWriter = new PrintWriter(new File("rankings.txt"));
+
+        printWriter.println(jogador);
+
+        printWriter.close();
     }
 }
