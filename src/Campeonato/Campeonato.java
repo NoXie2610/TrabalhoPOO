@@ -5,22 +5,37 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import Pessoas.Jogador;
+import Torneios.TorneioSingulares;
 import Torneios.TorneioDoubles;
 import Torneios.TorneioSingularesEliminatorias;
 import Torneios.TorneioSingularesPontos;
 
 public class Campeonato {
+    private ArrayList<Jogador>allPlayers;
     private ArrayList<TorneioDoubles> torneioDoubles;
     private ArrayList<TorneioSingularesEliminatorias> torneioSingularesEliminatorias;
     private ArrayList<TorneioSingularesPontos> torneioSingularesPontos;
 
     public Campeonato(ArrayList<TorneioDoubles> torneioDoubles,
                       ArrayList<TorneioSingularesEliminatorias> torneioSingularesEliminatorias,
-                      ArrayList<TorneioSingularesPontos> torneioSingularesPontos){
+                      ArrayList<TorneioSingularesPontos> torneioSingularesPontos,
+                      ArrayList<Jogador>allPlayers){
     
                         this.torneioDoubles = torneioDoubles;
                         this.torneioSingularesEliminatorias = torneioSingularesEliminatorias;
                         this.torneioSingularesPontos = torneioSingularesPontos;
+                        this.allPlayers = new ArrayList();
+                        
+    }                   
+
+
+    public void addPlayer(Jogador player){
+        if (!allPlayers.contains(player)) {
+            allPlayers.add(player);  
+        } else {
+            System.out.println("Jogador já está nos rankings");
+        }
     }
 
     public void medalharVencedores(){

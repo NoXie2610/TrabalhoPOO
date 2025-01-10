@@ -1,5 +1,8 @@
 package Torneios;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 
 import Partidas.PartidaSingulares;
@@ -49,17 +52,28 @@ public class TorneioSingularesPontos extends TorneioSingulares {
     }
 
     @Override
-    public void adicionarPartida(PartidaSingulares partida){
+    public void adicionarPartida (PartidaSingulares partida){
         if (partida != null) {
-            getPartidas().add(partida);
+            if( (partida.getJogador1().getGenero()==this.genero) && (partida.getJogador2().getGenero()==this.genero)){
+                getPartidas().add(partida);
+            }else{
+                System.err.println("Jogadores com género não compatível com o torneio.");
+            }
+
         } else {
-            System.out.println("Erro ao criar a partida!");
+            System.out.println("Erro ao adicionar partida!");
         }
     }
 
     @Override
     public void determinarVencedorTorneioSingulares(){
-        for(PartidaSingulares partida : getPartidas()) {
+        if(getJogadores().size() == 0){
+            System.err.println("Não existe jogadores para determinar um vencedor");
+        } 
+        else if (getJogadores().size() == 1) {
+            System.out.println("O vencedor do torneio é : " + getJogadores().get(0).getNome() + ". Muitos parabéns!!");     
+        }else{
+            for(PartidaSingulares partida : getPartidas()) {
             Jogador winner = partida.determinarVencedor();
             partida.getJogador1().adicionarPartidaJogada();
             partida.getJogador2().adicionarPartidaJogada();
@@ -81,8 +95,32 @@ public class TorneioSingularesPontos extends TorneioSingulares {
         } 
         Jogador vencedorTorneio = getJogadores().get(maxIndex);
         System.out.println("o jogador " + vencedorTorneio.getNome() + " ganhou com " + max + " pontos.");
-
+        
+        }
+        determinarRanking();
     }
+
+    public void determinarRanking(){
+    for(Jogador jogador : getJogadores()){
+        jogador.setRanking(jogador.getRanking()+5);
+    }
+    File file = new File("rankings.txt");
+    if(file.exists()){
+        file.delete();
+    }
+    try {
+        file.createNewFile();
+        PrintWriter printWriter = new PrintWriter(file);
+        for(Jogador jogador : getJogadores()){
+            printWriter.println(jogador.getNome()+":"+jogador.getRanking());
+        }
+        printWriter.close();
+    } catch (IOException e) {
+        System.err.println("erro");
+    }
+    
+  
+  }
             
 }
  
