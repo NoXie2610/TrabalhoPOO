@@ -1,4 +1,4 @@
-Tiago:25
-yuyu:505
-Diogo:1205
-dsadasdasiogo:1
+Tiago:800:25
+yuyu:505:20
+Diogo:1205:20
+dsadasdasiogo:1:31
