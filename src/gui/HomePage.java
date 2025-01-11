@@ -24,11 +24,15 @@ public class HomePage {
         JButton registrationButton = new JButton("Registrar Jogador");
         JButton gamesButton = new JButton("Ver Jogos");
         JButton startGameButton = new JButton("Iniciar Jogo");
+        JButton singlesTournamentButton = new JButton("Torneio Singular");
+        JButton doublesTournamentButton = new JButton("Torneio Duplas");
+        JButton rankingButton = new JButton("Ranking");
+        JButton registerRefereeButton = new JButton("Registrar Árbitro");
 
         registrationButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new RegistrationPage(torneioDoubles, torneioSingularesEliminatorias, torneioSingularesPontos); // Opens the registration page
+                new RegistrationPage(campeonato, torneioDoubles, torneioSingularesEliminatorias, torneioSingularesPontos); // Opens the registration page
                 frame.dispose(); // Closes the home page
             }
         });
@@ -49,9 +53,45 @@ public class HomePage {
             }
         });
 
+        singlesTournamentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new SinglesTournamentPage(); // Opens the singles tournament page
+                frame.dispose(); // Closes the home page
+            }
+        });
+
+        doublesTournamentButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new DoublesTournamentPage(); // Opens the doubles tournament page
+                frame.dispose(); // Closes the home page
+            }
+        });
+
+        rankingButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RankingPage(); // Opens the ranking page
+                frame.dispose(); // Closes the home page
+            }
+        });
+
+        registerRefereeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                new RegisterRefereePage(); // Opens the register referee page
+                frame.dispose(); // Closes the home page
+            }
+        });
+
         frame.add(registrationButton);
         frame.add(gamesButton);
         frame.add(startGameButton);
+        frame.add(singlesTournamentButton);
+        frame.add(doublesTournamentButton);
+        frame.add(rankingButton);
+        frame.add(registerRefereeButton);
 
         frame.setVisible(true);
     }
@@ -60,3 +100,14 @@ public class HomePage {
         SwingUtilities.invokeLater(() -> new HomePage());
     }
 }
+JButton ongoingGamesButton = new JButton("Ver Jogos em Andamento");
+
+ongoingGamesButton.addActionListener(new ActionListener() {
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    new OngoingGamesPage(); // Opens the ongoing games page
+    frame.dispose(); // Closes the home page
+    }
+});
+
+frame.add(ongoingGamesButton);
