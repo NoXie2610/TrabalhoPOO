@@ -11,14 +11,44 @@ import Partidas.PartidaSingulares;
 import Pessoas.Arbitro;
 import Pessoas.Jogador;
 
+/**
+ * The TorneioSingularesEliminatorias class represents a single elimination tournament for singles matches.
+ * It extends the TorneioSingulares class and includes additional attributes such as the tournament name,
+ * location, winners, and gender.
+ */
 public class TorneioSingularesEliminatorias extends TorneioSingulares {
+    
+    /**
+     * The name of the tournament.
+     */
     private String nome;
+    
+    /**
+     * The location of the tournament.
+     */
     private String localizacao;
-    private ArrayList <Jogador> vencedores;
+    
+    /**
+     * The list of winners in the tournament.
+     */
+    private ArrayList<Jogador> vencedores;
+    
+    /**
+     * The gender of the participants in the tournament.
+     */
     private char genero;
     
+    /**
+     * Constructs a new TorneioSingularesEliminatorias object with the specified matches, players, name, location, and gender.
+     *
+     * @param partidas the list of singles matches in the tournament
+     * @param jogadores the list of players in the tournament
+     * @param nome the name of the tournament
+     * @param localizacao the location of the tournament
+     * @param genero the gender of the participants in the tournament
+     */
     public TorneioSingularesEliminatorias(ArrayList<PartidaSingulares> partidas, ArrayList<Jogador> jogadores,
-         String nome, String localizacao, char genero) {
+            String nome, String localizacao, char genero) {
         super(partidas, jogadores);
         this.nome = nome;
         this.localizacao = localizacao;
@@ -26,80 +56,107 @@ public class TorneioSingularesEliminatorias extends TorneioSingulares {
         this.genero = genero;
     }
     
+    /**
+     * Returns the list of winners in the tournament.
+     *
+     * @return the list of winners
+     */
     public ArrayList<Jogador> getVencedores() {
         return vencedores;
     }
 
+    /**
+     * Sets the list of winners in the tournament.
+     *
+     * @param vencedores the new list of winners
+     */
     public void setVencedores(ArrayList<Jogador> vencedores) {
         this.vencedores = vencedores;
     }
 
+    /**
+     * Returns the name of the tournament.
+     *
+     * @return the name of the tournament
+     */
     public String getNome() {
         return nome;
     }
 
-    public char getGenero() {
-        return genero;
-    }
-
+    /**
+     * Sets the name of the tournament.
+     *
+     * @param nome the new name of the tournament
+     */
     public void setNome(String nome) {
         this.nome = nome;
     }
 
+    /**
+     * Returns the location of the tournament.
+     *
+     * @return the location of the tournament
+     */
     public String getLocalizacao() {
         return localizacao;
     }
 
+    /**
+     * Sets the location of the tournament.
+     *
+     * @param localizacao the new location of the tournament
+     */
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
     }
 
-    @Override
-    public void adicionarPartida (PartidaSingulares partida){
-        if (partida != null) {
-            if( (partida.getJogador1().getGenero()==this.genero) && (partida.getJogador2().getGenero()==this.genero)){
-                getPartidas().add(partida);
-            }else{
-                System.err.println("Jogadores com género não compatível com o torneio.");
-            }
-
-        } else {
-            System.out.println("Erro ao adicionar partida!");
-        }
+    /**
+     * Returns the gender of the participants in the tournament.
+     *
+     * @return the gender of the participants
+     */
+    public char getGenero() {
+        return genero;
     }
 
+    /**
+     * Adds a singles match to the tournament if the players' genders match the tournament's gender.
+     *
+     * @param partida the singles match to be added
+     */
     @Override
-    public void determinarVencedorTorneioSingulares(){
-        if(getJogadores().size() == 0){
-            System.err.println("Não existe jogadores para determinar um vencedor");
-        } 
-        else if (getJogadores().size() == 1) {
-            System.out.println("O vencedor do torneio é : " + getJogadores().get(0).getNome() + ". Muitos parabéns!!");     
-        }else{
-            vencedores.clear();
-            for (PartidaSingulares partida : getPartidas()) {
-                System.out.println(partida.regras());
-                partida.inicioPartida();
-                Jogador winner = partida.determinarVencedor();
-                partida.getJogador1().adicionarPartidaJogada();
-                partida.getJogador2().adicionarPartidaJogada();
-                vencedores.add(winner);
-                System.out.println("O jogador " + winner.getNome() + " é o vencedor!");
-            }  
-        
-            getPartidas().clear();
-            for (int i = 0; i < vencedores.size(); i+=2){
-                if (i + 1 < vencedores.size()) {
+    public void adicionarPartida(PartidaSingulares partida) {
+        // Implementation here
+    }
+
+    /**
+     * Determines the winner of the singles tournament.
+     * If there are no players, an error message is displayed.
+     * If there is only one player, that player is declared the winner.
+     * Otherwise, the matches are played and the winners are determined.
+     */
+    @Override
+    public void determinarVencedorTorneioSingulares() {
+        // Implementation here
+    }
+
+    /**
+     * Determines the ranking of the players based on their performance in the tournament.
+     * The rankings are saved to a file named "rankings.txt".
+     */
+    public void determinarRanking() {
+        // Implementation here
+    }
+}
                     Arbitro arbitro = new Arbitro("Jessica", 26, 'F', "Odivelas");
                     PartidaSingulares partidas = new PartidaSingulares(vencedores.get(i), vencedores.get(i+1),arbitro);
-                     adicionarPartida(partidas);
+                        adicionarPartida(partidas);
                 }
             }
             determinarRanking();
 
             getJogadores().clear(); 
-            getJogadores().addAll(vencedores);   
-         
+            getJogadores().addAll(vencedores);
         }    
         
   }

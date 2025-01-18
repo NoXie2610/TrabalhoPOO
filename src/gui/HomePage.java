@@ -7,6 +7,36 @@ import Partidas.*;
 import Pessoas.*;
 import Torneios.*;
 
+/**
+ * The HomePage class represents the main GUI for the tournament management system.
+ * It provides functionalities to register players and referees, generate tournaments,
+ * and visualize rankings.
+ * 
+ * <p>This class uses Swing components to create the GUI and handle user interactions.</p>
+ * 
+ * <p>Features:</p>
+ * <ul>
+ *   <li>Register Player</li>
+ *   <li>Register Referee</li>
+ *   <li>Generate/Control Tournament</li>
+ *   <li>Visualize Ranking</li>
+ * </ul>
+ * 
+ * <p>Example usage:</p>
+ * <pre>
+ * {@code
+ * SwingUtilities.invokeLater(HomePage::new);
+ * }
+ * </pre>
+ * 
+ * <p>Dependencies:</p>
+ * <ul>
+ *   <li>javax.swing.*</li>
+ *   <li>java.util.ArrayList</li>
+ * </ul>
+ * 
+ * <p>Author: Pedro</p>
+ */
 public class HomePage {
     private JFrame frame;
     private ArrayList<Jogador> jogadores = new ArrayList<>();

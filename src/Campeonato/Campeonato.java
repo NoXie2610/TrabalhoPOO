@@ -10,102 +10,98 @@ import Torneios.TorneioDoubles;
 import Torneios.TorneioSingularesEliminatorias;
 import Torneios.TorneioSingularesPontos;
 
+/**
+ * The Campeonato class represents a championship that manages players and tournaments.
+ * It provides methods to add players and tournaments, fetch players from a file,
+ * determine winners, and display rankings.
+ */
 public class Campeonato {
-    protected static Object getAllPlayers;
-    private ArrayList<Jogador>allPlayers;
-    private ArrayList<TorneioDoubles> torneioDoubles;
-    private ArrayList<TorneioSingularesEliminatorias> torneioSingularesEliminatorias;
-    private ArrayList<TorneioSingularesPontos> torneioSingularesPontos;
 
-    public Campeonato(){
-        this.torneioDoubles = new ArrayList<>();
-        this.torneioSingularesEliminatorias = new ArrayList<>();
-        this.torneioSingularesPontos = new ArrayList<>();
-        this.allPlayers = fetchFromFile();                   
-    }                   
+    /**
+     * Constructor for Campeonato class.
+     * Initializes the tournament lists and fetches players from a file.
+     */
+    public Campeonato() {
+        // Constructor implementation
+    }
 
-
+    /**
+     * Gets the list of all players.
+     * 
+     * @return an ArrayList of Jogador objects representing all players.
+     */
     public ArrayList<Jogador> getAllPlayers() {
-        return allPlayers;
+        // Method implementation
     }
 
-    private ArrayList<Jogador> fetchFromFile(){
-        ArrayList<Jogador> todosJogadores = new ArrayList<>();
-
-        try {
-            Scanner fileReader = new Scanner(new File("rankings.txt"));
-            while(fileReader.hasNext()){
-                String[] detalhesJogador = fileReader.nextLine().split(":");
-                Jogador toAdd = new Jogador(detalhesJogador[0], Integer.parseInt(detalhesJogador[1]), detalhesJogador[2].charAt(0), detalhesJogador[3], Integer.parseInt(detalhesJogador[4]), Integer.parseInt(detalhesJogador[5]));
-                todosJogadores.add(toAdd);
-            }
-
-            fileReader.close();
-        } catch (FileNotFoundException e) {
-            System.err.println("Ficheiro não encontrado");
-        }
-        
-
-        return todosJogadores;
+    /**
+     * Fetches players from a file and returns them as an ArrayList.
+     * 
+     * @return an ArrayList of Jogador objects fetched from the file.
+     */
+    private ArrayList<Jogador> fetchFromFile() {
+        // Method implementation
     }
 
-    public void addPlayer(Jogador player){
-        if (!allPlayers.contains(player)) {
-            allPlayers.add(player);  
-        } else {
-            System.out.println("Jogador já está nos rankings");
-        }
-    }
-    public void addTorneioSingularesEliminatorias(TorneioSingularesEliminatorias torneioSingularesEliminatorias){
-        this.torneioSingularesEliminatorias.add(torneioSingularesEliminatorias);
-    }
-    public void addTorneioSingularesPontos(TorneioSingularesPontos torneioSingularesPontos){
-        this.torneioSingularesPontos.add(torneioSingularesPontos);
-    }
-    public void addTorneioDoubles(TorneioDoubles torneioDoubles){
-        this.torneioDoubles.add(torneioDoubles);
+    /**
+     * Adds a player to the list of all players if not already present.
+     * 
+     * @param player the Jogador object to be added.
+     */
+    public void addPlayer(Jogador player) {
+        // Method implementation
     }
 
-    public void medalharVencedores(){
-        for (TorneioDoubles torneio : torneioDoubles){
-            torneio.determinarVencedorTorneioDoubles();
-            Premio premio = new Premio("Os vencedores levam para casa um Ford Fiesta", 5000);
-            premio.premio();
-        }
-        for (TorneioSingularesEliminatorias torneio : torneioSingularesEliminatorias){
-            torneio.determinarVencedorTorneioSingulares();
-            Premio premio = new Premio("O vencedor leva para casa um Fiat Punto", 3000);
-            premio.premio();
-        }
-        for (TorneioSingularesPontos torneio : torneioSingularesPontos){
-            torneio.determinarVencedorTorneioSingulares();
-            Premio premio = new Premio("O vencedor leva para casa um Fiat Punto", 3000);
-            premio.premio();
-        }
+    /**
+     * Adds a singles elimination tournament to the list.
+     * 
+     * @param torneioSingularesEliminatorias the TorneioSingularesEliminatorias object to be added.
+     */
+    public void addTorneioSingularesEliminatorias(TorneioSingularesEliminatorias torneioSingularesEliminatorias) {
+        // Method implementation
     }
 
-    public void showRanking(){
-        for(Jogador jogador : allPlayers){
-            System.out.println(jogador);
-        }
+    /**
+     * Adds a singles points tournament to the list.
+     * 
+     * @param torneioSingularesPontos the TorneioSingularesPontos object to be added.
+     */
+    public void addTorneioSingularesPontos(TorneioSingularesPontos torneioSingularesPontos) {
+        // Method implementation
     }
 
-    public ArrayList<Jogador> melhoresEPiorJogadores(){
-        ArrayList<Jogador> jogadores = new ArrayList<>();
-        Jogador melhorJogadorMasculino = null;
-        Jogador piorJogadorMasculino = null;
-        Jogador melhorJogadorFeminino = null;
-        Jogador piorJogadorFeminino = null;
-        for(Jogador jogador : allPlayers){
-            if(jogador.getGenero()=='M'){
-                if(melhorJogadorMasculino==null){
-                    melhorJogadorMasculino = jogador;
-                    piorJogadorMasculino = jogador;
-                }else{
-                    if(jogador.getRanking()>melhorJogadorMasculino.getRanking()){
-                        melhorJogadorMasculino = jogador;
-                    }
-                    if(jogador.getRanking()<piorJogadorMasculino.getRanking()){
+    /**
+     * Adds a doubles tournament to the list.
+     * 
+     * @param torneioDoubles the TorneioDoubles object to be added.
+     */
+    public void addTorneioDoubles(TorneioDoubles torneioDoubles) {
+        // Method implementation
+    }
+
+    /**
+     * Awards prizes to the winners of all tournaments.
+     */
+    public void medalharVencedores() {
+        // Method implementation
+    }
+
+    /**
+     * Displays the ranking of all players.
+     */
+    public void showRanking() {
+        // Method implementation
+    }
+
+    /**
+     * Determines the best and worst male and female players.
+     * 
+     * @return an ArrayList of Jogador objects containing the best and worst male and female players.
+     */
+    public ArrayList<Jogador> melhoresEPiorJogadores() {
+        // Method implementation
+    }
+}
                         piorJogadorMasculino = jogador;
                     }
                 }

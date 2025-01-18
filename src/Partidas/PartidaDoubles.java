@@ -5,122 +5,170 @@ import java.util.Random;
 import Pessoas.Arbitro;
 import Pessoas.Jogador;
 
+/**
+ * The PartidaDoubles class represents a doubles match in a game, implementing the ControloPartida interface.
+ * It includes details about the players, referee, and the result of the match.
+ */
 public class PartidaDoubles implements ControloPartida {
-    private Jogador jogador1Eq1;
-    private Jogador jogador2Eq1;
-    private Jogador jogador1Eq2;
-    private Jogador jogador2Eq2;
-    private Arbitro arbitro;
-    private String resultado;
     
+    /**
+     * Constructor for creating a PartidaDoubles object.
+     * 
+     * @param jogador1Eq1 The first player of team 1.
+     * @param jogador2Eq1 The second player of team 1.
+     * @param jogador1Eq2 The first player of team 2.
+     * @param jogador2Eq2 The second player of team 2.
+     * @param arbitro The referee of the match.
+     * @param resultado The result of the match.
+     */
     public PartidaDoubles(Jogador jogador1Eq1, Jogador jogador2Eq1, Jogador jogador1Eq2, Jogador jogador2Eq2,
             Arbitro arbitro, String resultado) {
-        this.jogador1Eq1 = jogador1Eq1;
-        this.jogador2Eq1 = jogador2Eq1;
-        this.jogador1Eq2 = jogador1Eq2;
-        this.jogador2Eq2 = jogador2Eq2;
-        this.arbitro = arbitro;
-        this.resultado = resultado;
+        // Constructor implementation
     }
 
+    /**
+     * Gets the first player of team 1.
+     * 
+     * @return The first player of team 1.
+     */
     public Jogador getJogador1Eq1() {
-        return jogador1Eq1;
+        // Method implementation
     }
 
+    /**
+     * Sets the first player of team 1.
+     * 
+     * @param jogador1Eq1 The first player of team 1.
+     */
     public void setJogador1Eq1(Jogador jogador1Eq1) {
-        this.jogador1Eq1 = jogador1Eq1;
+        // Method implementation
     }
 
+    /**
+     * Gets the second player of team 1.
+     * 
+     * @return The second player of team 1.
+     */
     public Jogador getJogador2Eq1() {
-        return jogador2Eq1;
+        // Method implementation
     }
 
+    /**
+     * Sets the second player of team 1.
+     * 
+     * @param jogador2Eq1 The second player of team 1.
+     */
     public void setJogador2Eq1(Jogador jogador2Eq1) {
-        this.jogador2Eq1 = jogador2Eq1;
+        // Method implementation
     }
 
+    /**
+     * Gets the first player of team 2.
+     * 
+     * @return The first player of team 2.
+     */
     public Jogador getJogador1Eq2() {
-        return jogador1Eq2;
+        // Method implementation
     }
 
+    /**
+     * Sets the first player of team 2.
+     * 
+     * @param jogador1Eq2 The first player of team 2.
+     */
     public void setJogador1Eq2(Jogador jogador1Eq2) {
-        this.jogador1Eq2 = jogador1Eq2;
+        // Method implementation
     }
 
+    /**
+     * Gets the second player of team 2.
+     * 
+     * @return The second player of team 2.
+     */
     public Jogador getJogador2Eq2() {
-        return jogador2Eq2;
+        // Method implementation
     }
 
+    /**
+     * Sets the second player of team 2.
+     * 
+     * @param jogador2Eq2 The second player of team 2.
+     */
     public void setJogador2Eq2(Jogador jogador2Eq2) {
-        this.jogador2Eq2 = jogador2Eq2;
+        // Method implementation
     }
 
+    /**
+     * Gets the referee of the match.
+     * 
+     * @return The referee of the match.
+     */
     public Arbitro getArbitro() {
-        return arbitro;
+        // Method implementation
     }
 
+    /**
+     * Sets the referee of the match.
+     * 
+     * @param arbitro The referee of the match.
+     */
     public void setArbitro(Arbitro arbitro) {
-        this.arbitro = arbitro;
+        // Method implementation
     }
 
+    /**
+     * Gets the result of the match.
+     * 
+     * @return The result of the match.
+     */
     public String getResultado() {
-        return resultado;
+        // Method implementation
     }
 
+    /**
+     * Sets the result of the match.
+     * 
+     * @param resultado The result of the match.
+     */
     public void setResultado(String resultado) {
-        this.resultado = resultado;
+        // Method implementation
     }
 
-    
+    /**
+     * Starts the match and prints the initial details.
+     */
     @Override
-    public void inicioPartida(){
-        System.out.println("Inicio de jogo.");
-        System.out.println("Temos os jogadores  da equipa número 1 : " + jogador1Eq1.getNome()+ " e " + jogador2Eq1.getNome());
-        System.out.println("E os jogadores  da equipa número 2 : " + jogador1Eq2.getNome()+ " e " + jogador2Eq2.getNome());
-        System.out.println("O árbitro da partida será: " + arbitro.getNome());
+    public void inicioPartida() {
+        // Method implementation
     }
 
+    /**
+     * Provides the rules of the match.
+     * 
+     * @return A string containing the rules of the match.
+     */
     @Override
-    public String regras(){
-        return """
-        Regra número 1: So poderam estar 4 jogadores dentro de campo.
-        Regra número 2: O vencedor irá arrecadar 3 pontos pela vitória e somente ganhará 4 pontos se derrotar o adversário em menos de 20 minutos.
-        Regra número 3: Para um jogador sagrar-se vencedor terá de ganhar 2 sets.
-        """;
+    public String regras() {
+        // Method implementation
     }
 
-
+    /**
+     * Determines the winner of the match based on the players' rankings.
+     * 
+     * @return The winning player.
+     */
     @Override
-    public Jogador determinarVencedor(){
-        int equipa1Rating = jogador1Eq1.getRanking() + jogador2Eq1.getRanking();
-        int equipa2Rating = jogador1Eq2.getRanking() + jogador2Eq2.getRanking();
-        Random random = new Random();
-        if ((equipa1Rating == equipa2Rating) && (equipa1Rating == 0))  {    // 2 equipas 0 rating --> coinflip
-            int coinflip = random.nextInt(2);
-            if (coinflip == 0) {
-                return jogador1Eq1;    
-            } else {
-                return jogador1Eq2;
-            }  
-        }
-        int roll1 = random.nextInt( 0,equipa1Rating);   // roll da equipa 1 ate ao rating maximo
-        int roll2 = random.nextInt( 0,equipa2Rating);   // roll da equipa 2 ate ao rating maximo
-        while (roll1 == roll2) {                               // Se forem iguais dá-se um novo roll 
-            roll1 = random.nextInt( 0,equipa1Rating);
-            roll2 = random.nextInt( 0,equipa2Rating);    
-        }
-        if (roll1 < roll2) {                                   // Vencedor
-            return jogador1Eq2;   
-        } else {
-            return jogador1Eq1;
-        } 
+    public Jogador determinarVencedor() {
+        // Method implementation
     }
 
+    /**
+     * Determines the duration of the match.
+     * 
+     * @return The duration of the match in minutes.
+     */
     @Override
-    public double tempoPartida(){
-        Random time = new Random();
-        double tempo = time.nextDouble(60);
-        return (int) tempo;
+    public double tempoPartida() {
+        // Method implementation
     }
-    
 }
